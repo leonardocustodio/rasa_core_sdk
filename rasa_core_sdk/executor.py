@@ -40,6 +40,15 @@ class CollectingDispatcher(object):
 
         self.messages.append(message)
 
+    def utter_quick_replies_message(self, text, buttons, **kwargs):
+        # type: (Text, List[Dict[Text, Any]], Any) -> None
+        """Sends a message with buttons to the output channel."""
+
+        message = {"text": text, "quick_replies": buttons}
+        message.update(kwargs)
+
+        self.messages.append(message)
+
     def utter_button_message(self, text, buttons, **kwargs):
         # type: (Text, List[Dict[Text, Any]], Any) -> None
         """Sends a message with buttons to the output channel."""
